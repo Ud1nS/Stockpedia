@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stock News - Stockpedia</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='predict_style.css') }}">
+    <link rel="icon" type="image.png" href="{{ url_for('static', filename=img_url2) }}">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+</head>
+<body>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+    <div class="image-gradient"></div>
+    <div class="layer-blur"></div>
+    
+    <div class="container">
+        <header>
+            <img src="{{ url_for('static', filename=img_url3) }}" alt="Stockpedia Logo" class="logo" data-aos="fade-down" data-aos-duration="1500" />
+            
+            <nav data-aos="fade-left" data-aos-duration="1200" data-aos-delay="300">
+                <a href="{{ url_for('home') }}" data-aos="zoom-in" data-aos-delay="400">ABOUT US</a>
+                <a href="{{ url_for('news') }}" data-aos="zoom-in" data-aos-delay="500">NEWS</a>
+                <a href="{{ url_for('predict') }}" data-aos="zoom-in" data-aos-delay="600">PREDICT</a>
+            </nav>
+        </header>
+        
+        <main>
+   <main>
+            <div class="prediction-container" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="200">
+                <div class="predict-form-container" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="card">
+                        <h2>Make a Prediction</h2>
+                        <form method="POST" action="{{ url_for('predict') }}">
+                            <div class="form-group">
+                                <label for="stock">Select Stock:</label>
+                                <select name="stock" id="stock" class="form-control" required>
+                                    <option value="">Choose a stock...</option>
+                                    {% for stock in stocks %}
+                                    <option value="{{ stock }}" {% if selected_stock == stock %}selected{% endif %}>
+                                        {{ stock }}
+                                    </option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="target_date">Target Date:</label>
+                                <input type="date" name="target_date" id="target_date" class="form-control" 
+                                       value="{{ selected_date if selected_date else '' }}" required>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary">
+                                <span class="btn-text">Predict Stock Price</span>
+                                <span class="btn-icon">📈</span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                {% if plot_img %}
+                <div class="results-container" data-aos="fade-up" data-aos-delay="400">
+                    <div class="card">
+                        <h2>Prediction Results</h2>
+                        <div class="prediction-info">
+                            <div class="info-item">
+                                <span class="info-label">Stock:</span>
+                                <span class="info-value">{{ selected_stock }}</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Target Date:</span>
+                                <span class="info-value">{{ selected_date }}</span>
+                            </div>
+                        </div>
+                        
+                        <div class="chart-container">
+                            <img src="data:image/png;base64,{{ plot_img }}" alt="Stock Prediction Chart" class="prediction-chart">
+                        </div>
+                        
+                        <div class="chart-info">
+                            <p><strong>📊 Chart Analysis:</strong> This chart shows the predicted closing prices for {{ selected_stock }} over a 30-day period leading up to {{ selected_date }}. The prediction is based on historical patterns and machine learning algorithms.</p>
+                            <div class="disclaimer">
+                                <p><strong>⚠️ Disclaimer:</strong> These predictions are for educational purposes only and should not be used as the sole basis for investment decisions. Always consult with financial advisors and conduct your own research.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+
+                <div class="stock-info-container" data-aos="fade-up" data-aos-delay="500">
+                    <div class="card">
+                        <h2>Available Stocks</h2>
+                        <div class="stock-grid">
+                            {% for stock in stocks %}
+                            <div class="stock-item {% if selected_stock == stock %}active{% endif %}">
+                                <div class="stock-symbol">{{ stock }}</div>
+                                <div class="stock-name">
+                                    {% if 'BBCA' in stock %}Bank Central Asia
+                                    {% elif 'BBRI' in stock %}Bank Rakyat Indonesia
+                                    {% elif 'BMRI' in stock %}Bank Mandiri
+                                    {% elif 'TLKM' in stock %}Telkom Indonesia
+                                    {% elif 'ASII' in stock %}Astra International
+                                    {% elif 'MDKA' in stock %}Merdeka Copper Gold
+                                    {% elif 'BBNI' in stock %}Bank Negara Indonesia
+                                    {% elif 'BOGA' in stock %}Bogasari Flour Mills
+                                    {% elif 'ADRO' in stock %}Adaro Energy
+                                    {% elif 'NATO' in stock %}Nato Industri
+                                    {% elif 'ANTM' in stock %}Aneka Tambang
+                                    {% elif 'BHAT' in stock %}Buana Artha Anugerah
+                                    {% elif 'UNTR' in stock %}United Tractors
+                                    {% elif 'ARTO' in stock %}Bank Jago
+                                    {% elif 'BRIS' in stock %}Bank Syariah Indonesia
+                                    {% elif 'SMMA' in stock %}Sinar Mas Multiartha
+                                    {% elif 'MEDC' in stock %}Medco Energi
+                                    {% elif 'TCPI' in stock %}Transcoal Pacific
+                                    {% else %}{{ stock.replace('.JK', '') }}
+                                    {% endif %}
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+        </main>
+    </div>
+</body>
+</html>

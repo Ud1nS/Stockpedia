@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stock News - Stockpedia</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='news_style.css') }}">
+    <link rel="icon" type="image.png" href="{{ url_for('static', filename=img_url2) }}">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+</head>
+<body>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+    <div class="image-gradient"></div>
+    <div class="layer-blur"></div>
+    
+    <div class="container">
+        <header>
+            <img src="{{ url_for('static', filename=img_url3) }}" alt="Stockpedia Logo" class="logo" data-aos="fade-down" data-aos-duration="1500" />
+            
+            <nav data-aos="fade-left" data-aos-duration="1200" data-aos-delay="300">
+                <a href="{{ url_for('home') }}" data-aos="zoom-in" data-aos-delay="400">ABOUT US</a>
+                <a href="{{ url_for('news') }}" data-aos="zoom-in" data-aos-delay="500">NEWS</a>
+                <a href="{{ url_for('predict') }}" data-aos="zoom-in" data-aos-delay="600">PREDICT</a>
+            </nav>
+        </header>
+        
+        <main>
+            <div class="page-header">
+                <h1>Latest Stock News</h1>
+                <p class="page-description">Stay updated with the latest market trends, stock recommendations, and financial insights from Indonesia's leading financial sources.</p>
+            </div>
+
+            <section class="news-grid">
+                <article class="news-card featured">
+                    <div class="news-content">
+                        <span class="news-badge trending">Trending</span>
+                        <h2><a href="https://market.bisnis.com/read/20250523/189/1879338/rekomendasi-saham-dan-pergerakan-ihsg-hari-ini-jumat-23-mei-2025" target="_blank">Stock Recommendations and IHSG Movement Today, Friday May 23, 2025</a></h2>
+                        <p>IHSG strengthened 0.34% to 7,166 level at the end of Thursday trading (22/5/2025).</p>
+                        <div class="news-meta">
+                            <span class="source">Bisnis.com</span>
+                            <span class="date">May 23, 2025</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <div class="news-content">
+                        <span class="news-badge dividend">Dividends</span>
+                        <h3><a href="https://www.cnbcindonesia.com/research/20250523070838-128-635509/15-saham-ini-konsisten-bagi-dividen-20-tahun-bbri-tlkm" target="_blank">15 Stocks Consistently Pay Dividends for 20 Years: BBRI, TLKM</a></h3>
+                        <p>List of stocks that have consistently distributed dividends for the last 20 years, including BBRI and TLKM.</p>
+                        <div class="news-meta">
+                            <span class="source">CNBC Indonesia</span>
+                            <span class="date">May 23, 2025</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <div class="news-content">
+                        <span class="news-badge bullish">Market Up</span>
+                        <h3><a href="https://market.bisnis.com/read/20250523/7/1879353/ihsg-tembus-level-7200-pagi-ini-didorong-saham-bbri-asii-hingga-tpia" target="_blank">IHSG Breaks 7,200 Level This Morning Driven by BBRI, ASII, to TPIA Stocks</a></h3>
+                        <p>IHSG opened in the green zone on Friday trading (23/5/2025), breaking through the 7,200 level.</p>
+                        <div class="news-meta">
+                            <span class="source">Bisnis.com</span>
+                            <span class="date">May 23, 2025</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <div class="news-content">
+                        <span class="news-badge foreign">Foreign Flow</span>
+                        <h3><a href="https://pusatdata.kontan.co.id/news/ihsg-tembus-7200-bbri-antm-bbca-paling-banyak-net-buy-asing-jumat-235" target="_blank">IHSG Breaks 7,200, BBRI, ANTM, BBCA Most Net Buy Foreign, Friday (23/5)</a></h3>
+                        <p>Foreign investors recorded net buy of Rp 589 billion when IHSG rose 0.66% to 7,214.16 on Friday trading (23/5).</p>
+                        <div class="news-meta">
+                            <span class="source">Kontan</span>
+                            <span class="date">May 23, 2025</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <div class="news-content">
+                        <span class="news-badge analysis">Analysis</span>
+                        <h3><a href="https://investasi.kontan.co.id/news/ihsg-betah-di-level-7000-intip-rekomendasi-saham-hingga-akhir-mei-2025" target="_blank">IHSG Comfortable at 7,000 Level, Check Stock Recommendations Until End of May 2025</a></h3>
+                        <p>IHSG projection until the end of May 2025 is in the range of 7,200–7,300 with banking and property sectors still attractive.</p>
+                        <div class="news-meta">
+                            <span class="source">Kontan</span>
+                            <span class="date">May 22, 2025</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <div class="news-content">
+                        <span class="news-badge funds">Mutual Funds</span>
+                        <h3><a href="https://www.bareksa.com/berita/reksa-dana/2025-05-22/koleksi-saham-antm-bbri-bmri-bbca-hingga-pgas-cuan-reksadana-manulife-dan-schroder-ngegas" target="_blank">Collection of ANTM, BBRI, BMRI, BBCA to PGAS Stocks, Manulife and Schroder Mutual Fund Profits Accelerate</a></h3>
+                        <p>Manulife and Schroder mutual funds recorded positive performance thanks to collections of ANTM, BBRI, BMRI, BBCA, and PGAS stocks.</p>
+                        <div class="news-meta">
+                            <span class="source">Bareksa</span>
+                            <span class="date">May 22, 2025</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <div class="news-content">
+                        <span class="news-badge foreign">Foreign Interest</span>
+                        <h3><a href="https://id.investing.com/news/stock-market-news/asing-gencar-koleksi-saham-bbri-antm-dan-bbca-sejak-awal-bulan-2789339" target="_blank">Foreign Investors Aggressively Collect BBRI, ANTM, and BBCA Stocks Since Early Month</a></h3>
+                        <p>BBRI stock price has strengthened 10.39% since early May 2025, to Rp4,250 per share at Friday's trading close.</p>
+                        <div class="news-meta">
+                            <span class="source">Investing.com</span>
+                            <span class="date">May 22, 2025</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <div class="news-content">
+                        <span class="news-badge recommendations">Picks</span>
+                        <h3><a href="https://www.bloombergtechnoz.com/detail-news/71979/rangkuman-rekomendasi-saham-hari-ini-22-mei-2025" target="_blank">Summary of Today's Stock Recommendations, May 22, 2025</a></h3>
+                        <p>IHSG closed trading almost at the highest position throughout the day at 7,170.72.</p>
+                        <div class="news-meta">
+                            <span class="source">Bloomberg Technoz</span>
+                            <span class="date">May 22, 2025</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <div class="news-content">
+                        <span class="news-badge guide">How-to</span>
+                        <h3><a href="https://tirto.id/rekomendasi-saham-hari-ini-23-mei-2025-cara-beli-online-hb8P" target="_blank">Today's Stock Recommendations, May 23, 2025 & How to Buy Online</a></h3>
+                        <p>Today's stock trading opened with positive expectations after IHSG closed yesterday's session in the green zone.</p>
+                        <div class="news-meta">
+                            <span class="source">Tirto.id</span>
+                            <span class="date">May 23, 2025</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <div class="news-content">
+                        <span class="news-badge analysis">Deep Dive</span>
+                        <h3><a href="https://www.idxchannel.com/market-news/analisis-saham-tlkm-bbca-bbri-bmri" target="_blank">Stock Analysis: TLKM, BBCA, BBRI, BMRI</a></h3>
+                        <p>In-depth analysis of TLKM, BBCA, BBRI, and BMRI stock movements by IDX Channel.</p>
+                        <div class="news-meta">
+                            <span class="source">IDX Channel</span>
+                            <span class="date">May 22, 2025</span>
+                        </div>
+                    </div>
+                </article>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
