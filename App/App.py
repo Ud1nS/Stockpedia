@@ -7,8 +7,8 @@ import base64
 
 app = Flask(__name__)
 
-CloseModel = joblib.load('close_predict.pkl')
-FutureModel = joblib.load('future_predict.pkl')
+CloseModel = joblib.load('App/close_predict.pkl')
+FutureModel = joblib.load('App/future_predict.pkl')
 
 stocks = [
     'BBCA.JK', 'BBRI.JK', 'BMRI.JK', 'TLKM.JK',
@@ -19,7 +19,7 @@ stocks = [
 
 data = pd.read_csv('stock_data_reshaped.csv')
 data['Date'] = pd.to_datetime(data['Date'])
-mapping_ticker = pd.read_pickle('mapping_ticker.pkl')
+mapping_ticker = pd.read_pickle('App/mapping_ticker.pkl')
 
 
 def forecast_to_date(data, mapping_ticker, future_predict_model, close_predict_model, target_date_str, ticker_symbol):
